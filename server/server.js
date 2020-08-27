@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 // Route includes
 const favoriteRouter = require('./routes/favorite.router');
 const categoryRouter = require('./routes/category.router');
-const searchRouter = require('./routes/search.router.js');
+const searchRouter = require('./routes/search.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
