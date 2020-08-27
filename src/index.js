@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
+
 import axios from 'axios';
 // Redux
 import { createStore, combineReducers, applyMiddleware } from 'redux';
@@ -18,13 +19,24 @@ const favoriteReducer = (state = {}, action) => {
     return state;
 }
 
-const searchReducer = (state = {}, action) => {
+  const searchReducer = (state = [], action) => {
     if(action.type === 'SET_SEARCH') {
         return action.payload;
     }
     console.log(state);
     return state;
 }
+
+
+function* searchForGif(action) {
+    try {
+        console.log(action.payload)
+        let response = yield axios.get(`/api/search/q=${action.payload}`);
+        console.log(response.data);
+
+        yield put({type: 'SET_SEARCH', payload: response.data.data})
+    } catch (error) {
+        console.log('error in searchForGif', error);
 
 function* getFavorites() {
     try {
@@ -33,16 +45,6 @@ function* getFavorites() {
         yield put({type:'SET_FAVORITES', payload: response.data});
     } catch (error) {
         console.log('error in getFavorites', error)
-    }
-}
-
-function* getSearch() {
-    try {
-        let response = yield axios.get('/')
-        console.log('Search:', response.data);
-        yield put({type:'SET_SEARCH', payload: response.data});        
-    } catch (error) {
-        console.log('error in getSearch', error);
     }
 }
 
@@ -69,7 +71,7 @@ function* updateFavorite(action) {
 
 function* watcherSaga() {
     yield takeEvery('GET_FAVORITES', getFavorites);
-    yield takeEvery('GET_SEARCH', getSearch);
+    yield takeEvery('SEARCH_FOR_GIF', searchForGif);
     yield takeEvery('ADD_FAVORITE', addFavorite);
 }
   
@@ -82,6 +84,7 @@ const store = createStore(
     }),
     applyMiddleware(sagaMiddleware, logger),
 );
+
 
 sagaMiddleware.run(watcherSaga);
 
