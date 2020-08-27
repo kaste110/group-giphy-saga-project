@@ -46,9 +46,21 @@ function* getSearch() {
     }
 }
 
+function* addFavorite(action) {
+    try {
+        let response = yield axios.post('/api/favorite', action.payload)
+        yield put({type:'GET_FAVORITES'});
+    } catch (error) {
+        console.log('error in addFavorite', error);
+    }
+}
+
+
+
 function* watcherSaga() {
-    yield takeEvery('GET_FAVORITES', getFavorites)
-    yield takeEvery('GET_SEARCH', getSearch)
+    yield takeEvery('GET_FAVORITES', getFavorites);
+    yield takeEvery('GET_SEARCH', getSearch);
+    yield takeEvery('ADD_FAVORITE', addFavorite);
 }
   
 const sagaMiddleware = createSagaMiddleware();
