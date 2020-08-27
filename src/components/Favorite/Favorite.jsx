@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Favorite extends Component {
     
@@ -13,7 +14,7 @@ class Favorite extends Component {
 
     render() { 
         return (
-            
+            <p>Favorites</p>
           );
     }
 }

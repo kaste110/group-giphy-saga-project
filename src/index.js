@@ -49,9 +49,19 @@ function* getSearch() {
 function* addFavorite(action) {
     try {
         let response = yield axios.post('/api/favorite', action.payload)
+        console.log('adding to favorites', action.payload);
         yield put({type:'GET_FAVORITES'});
     } catch (error) {
         console.log('error in addFavorite', error);
+    }
+}
+
+function* updateFavorite(action) {
+    try {
+        let response = yield axios.put('/api/favorite/:favId', action.payload)
+        yield put({type:''})
+    } catch (error) {
+        console.log('error in updateFavorite', error);
     }
 }
 

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 class FavoriteItem extends Component {
 
@@ -7,8 +8,13 @@ class FavoriteItem extends Component {
         newFavorite: ''
     }
 
+    getURL = () => {
+        
+    }
+
     addFavorite = () => {
-        axios.post('/api/favorite')
+        console.log('click works');
+        this.props.dispatch({ type: 'ADD_FAVORITE', payload: 'Hi' });
     }
     
    
@@ -20,5 +26,9 @@ class FavoriteItem extends Component {
           );
     }
 }
+
+const mapStateToProps = (reduxState) => ({
+    reduxState
+  })
  
-export default FavoriteItem;
+export default connect(mapStateToProps)(FavoriteItem);
