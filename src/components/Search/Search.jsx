@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import SearchList from '../SearchList/SearchList.jsx';
 
@@ -42,3 +43,4 @@ const mapStateToProps = reduxState => ({
 });
 
 export default connect(mapStateToProps)(Search);
+

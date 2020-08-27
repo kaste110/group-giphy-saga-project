@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import Search from '../Search/Search.jsx';
 import Favorite from '../Favorite/Favorite.jsx';
+import FavoriteItem from '../FavoriteItem/FavoriteItem.jsx';
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
           <Search />
           <Route exact path="/" component={Search} />
           <Route path="/favorite" component={Favorite} />
+          <FavoriteItem />
         </div>
       </Router>
 
