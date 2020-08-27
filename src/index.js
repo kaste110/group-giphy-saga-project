@@ -34,7 +34,7 @@ function* getFavorites() {
     } catch (error) {
         console.log('error in getFavorites', error)
     }
-  }
+}
 
 function* getSearch() {
     try {
