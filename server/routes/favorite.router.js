@@ -19,9 +19,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   console.log('Adding new favorite:', req.body);
   let queryText = `
-      INSERT INTO "favorite" ("url") 
+      INSERT INTO "favorites" ("url") 
       VALUES ($1);`;
-  pool.query(queryText, req.body)
+  pool.query(queryText, [req.body.url])
   .then(result => {
       res.sendStatus(201);
   })
