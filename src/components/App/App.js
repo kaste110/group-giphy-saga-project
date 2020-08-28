@@ -14,7 +14,7 @@ class App extends Component {
       <Router>
         <div>
           <h1>Giphy Search!</h1>
-          <Search />
+          
           <Route exact path="/" component={Search} />
           <Route path="/favorite" component={Favorite} />
           <FavoriteItem />
