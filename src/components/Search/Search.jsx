@@ -10,10 +10,6 @@ class Search extends Component {
         searchList: []
     };
 
-    // componentDidMount() {
-    //     this.searchForGif();
-    // };
-
     searchForGif = (searchQuery) => {
         console.log(searchQuery)
         this.props.dispatch({type: 'SEARCH_FOR_GIF', payload: searchQuery})

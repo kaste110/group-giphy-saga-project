@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import FavoriteItem from '../FavoriteItem/FavoriteItem';
 
 class Favorite extends Component {
-    
-    updateFavorite = () => {
-        axios.put('/api/favorite')
-        .then( response => {
-            console.log('updating favorite item with category id');
-        }).catch( err => {
-            console.log('error in updating', err);
-        })
+
+    componentDidMount() {
+        this.getFavorites();
+    };
+
+    getFavorites = () => {
+        this.props.dispatch({ type: 'GET_FAVORITES' })
     }
 
     render() { 
         return (
-            <p>Favorites</p>
-          );
+            <>
+                <h3>Favorites</h3>
+                { this.props.reduxState.favoriteReducer.map((favorite) => {
+                    return(<FavoriteItem favorite={favorite} key={favorite.id}/>)
+                })}
+            </>
+        );
     }
 }
+
+const mapStateToProps = (reduxState) => ({
+    reduxState
+  })
  
-export default Favorite;
+ 
+export default connect(mapStateToProps)(Favorite);
