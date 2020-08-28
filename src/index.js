@@ -37,6 +37,8 @@ function* searchForGif(action) {
         yield put({type: 'SET_SEARCH', payload: response.data.data})
     } catch (error) {
         console.log('error in searchForGif', error);
+    }
+}
 
 function* getFavorites() {
     try {
