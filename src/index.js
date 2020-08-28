@@ -37,6 +37,8 @@ function* searchForGif(action) {
         yield put({type: 'SET_SEARCH', payload: response.data.data})
     } catch (error) {
         console.log('error in searchForGif', error);
+    }
+}
 
 function* getFavorites() {
     try {
@@ -50,7 +52,8 @@ function* getFavorites() {
 
 function* addFavorite(action) {
     try {
-        let response = yield axios.post('/api/favorite', action.payload)
+
+        let response = yield axios.post('/api/favorite', {url: action.payload})
         console.log('adding to favorites', action.payload);
         yield put({type:'GET_FAVORITES'});
     } catch (error) {
