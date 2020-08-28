@@ -1,0 +1,13 @@
+.searchBar {
+    background-color: #222;
+    height: 30px;
+}
+
+.searchBtn {
+    float: right;
+    margin-right: 15px;
+}
+
+.searchInput {
+    margin-left: 15px;
+}
