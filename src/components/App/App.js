@@ -17,6 +17,7 @@ class App extends Component {
           <header>
           <h1>Giphy Search!</h1>
           </header>
+
           <Route exact path="/" component={Search} />
           <Route path="/favorite" component={Favorite} />
           <FavoriteItem />
