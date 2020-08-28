@@ -25,7 +25,6 @@ class FavoriteItem extends Component {
     render() { 
         return (
             <div>
-                <p>{this.props.favorite.url}</p>
                 <img src={this.props.favorite.url} />
                 <select onChange={(value) => this.handleSelect(value)} name="category" id="category">
                     <option value="1">Funny</option>
