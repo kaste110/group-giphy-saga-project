@@ -14,8 +14,8 @@ class App extends Component {
       <Router>
         <header>
           <ul>
-            <li><Link to='/'>Search for GIFs</Link></li>
-            <li><Link to='/favorite'>Favorite GIFs</Link></li>
+            <h4><Link to='/'>Search for GIFs</Link></h4>
+            <h4><Link to='/favorite'>Favorite GIFs</Link></h4>
           </ul>
         </header>
         <div>
